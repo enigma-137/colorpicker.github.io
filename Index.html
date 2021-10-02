@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html>
-  <head lang="eng">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="snake V1" content="width = device-width, initial-scale = 1"/>
-    <title>Snake V2</title>
-    <link rel="stylesheet" href="snake.css" type="text/css" />
-  </head>
-  <body>
-    <!---#game container-->
-    <div id="gameContainer"></div>
-    <div id="scoreContainer">
-      <div class="scoreboard">Food: <span id="pointsEarned">0</span> </div>
-    <div class="scoreboard">Blocks: <span id="blocksTravelled">0</span> </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color checker</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #color {
+            height: 1.5rem;
+            width: 15rem;
+            border-radius: 1rem;
+            border: 3px solid rgb(226, 226, 226);
+            padding: .2rem 1rem;
+            font-size: .75rem;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <input type="text" placeholder="#ffffff" id="color">
+        </div>
     </div>
-    <div id="onscreenControl">
-      <button id="leftButton">◀️</button>
-      <button id="upButton">🔺</button>
-      <button id="downButton">🔻</button>
-      <button id="rightButton">▶️</button>
-    </div>
-    <div class="developerDetails">
-     <div> Made by <a href="mailto: emmanuelonoja291@gmail.com?subject=feedback">Enigma</a> </div>
-    </div>
-  </body>
-  
-  <script src="snake.js"></script>
-  
+    <script>
+        const colorInputEl = document.getElementById('color')
+        colorInputEl.addEventListener('input', event => {
+            const color = event.target.value
+            const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
+            if( color.match(hexColorRegex) ) {
+                //colorInputEl.style.borderColor = color
+                document.body.style.backgroundColor = color
+            } else {
+                colorInputEl.style.borderColor = 'rgb(226, 226, 226)'
+            }
+        })
+    </script>
+</body>
 </html>
